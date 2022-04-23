@@ -22,10 +22,39 @@
                     <a class="nav-link" href="#">Business</a>
                 </li>
             </ul>
+
+            @auth
+            <div class="d-flex user-logged nav-item dropdown no-arrow">
+                <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    @php
+                    $name = explode(" ",Auth::user()->name)
+                    @endphp
+                    Halo, {{ $name[0] }}!
+                    <img src="{{ Auth::user()->avatar }}" class="user-photo" style="border-radius: 50%"
+                        alt="user-image">
+
+                    <ul class="dropdown-menu" aria-labelledby="drodownMenuLink" style="right: 0; left: auto;">
+                        <li>
+                            <a href="#" class="dropdown-item">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-item"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sign
+                                Out</a>
+                            <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </a>
+            </div>
+            @else
             <div class="d-flex">
                 <a href="{{ route('login') }}" class="btn btn-master btn-secondary me-3"> Sign In </a>
                 <a href="#" class="btn btn-master btn-primary"> Sign Up </a>
             </div>
+            @endauth
+
         </div>
     </div>
 </nav>
