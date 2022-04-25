@@ -38,6 +38,6 @@ class UserController extends Controller
         );
         Auth::login($user, true);
 
-        return redirect(route('home'))->with(['success' => 'Success Login']);
+        return redirect(route('home'));
     }
 }

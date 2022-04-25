@@ -30,8 +30,7 @@
                     $name = explode(" ",Auth::user()->name)
                     @endphp
                     Halo, {{ $name[0] }}!
-                    <img src="{{ Auth::user()->avatar }}" class="user-photo" style="border-radius: 50%"
-                        alt="user-image">
+                    <img src="{{ Auth::user()->avatar }}" class="user-photo" style="border-radius: 50%">
 
                     <ul class="dropdown-menu" aria-labelledby="drodownMenuLink" style="right: 0; left: auto;">
                         <li>
